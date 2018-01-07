@@ -2,37 +2,63 @@ import pandas as pd
 from IPython.display import display,clear_output
 import numpy as np
 from sklearn import tree
+from sklearn import metrics
 import sys
 
-trainingFile = 'traing_data2.csv'
-testingFile = 'testing_data2.csv'
+trainingFile = './data/training/training_data2_IP_with_label.csv'
+testingFile = './data/testing/testing_data2.csv'
+testingIpLabelFile = './data/testing/testing_data2_IP_with_label.csv'
 
+"""
+    dataset:
+    +------------------------------------------------------+
+    | Index | IP address | Domain | flag | date | IP label |
+    |------------------------------------------------------|
+    |      |                      |                        |
+    +------------------------------------------------------+
+
+"""
 dataset = pd.read_csv(trainingFile)
-dataset['IP label'] = dataset.groupby('IP address').grouper.group_info[0] + 1
-dataset['IP address'] = dataset['IP address'].astype('str')
-# a = dataset[dataset['IP label'] == 1]
-# if(len(a) > 0):
-#     ipAddress = a['IP address'].unique()[0]
-#     print ipAddress
+mask1 = (dataset['date'] >= '2017-01-06 18:00:00') & (dataset['date'] <='2017-01-06 23:59:59')
 
-IP_label = dataset[['IP label', 'IP address']].copy()
-IP_label = IP_label.drop_duplicates(['IP label'])
-IP_label = IP_label.drop_duplicates(['IP address'])
-IP_label = IP_label.reset_index(drop=True)
-#print IP_label.iloc[0, 1]
 
+"""
+
+    X:
+    +----------------+
+    | Index | Domain |
+    |----------------|
+    |       |        |
+    +----------------+
+
+"""
 X=dataset.drop(['IP address','flag','date','IP label'], 1)
+
+
+"""
+
+    Y:
+    +------------------+
+    | Index | IP label |
+    |------------------|
+    |       |          |
+    +------------------+
+
+"""
 Y=dataset.drop(['IP address','Domain','flag','date'], 1)
 
-''' training data '''
+
+''' training data transform to numpy array '''
 X=X.values
 Y=Y.values
+
 
 ''' testing data '''
 test = pd.read_csv(testingFile)
 test_X = test.drop(['IP address','flag','date'], 1)
-test_Y = test.drop(['Domain','flag','date'], 1)
+test_Y = pd.read_csv(testingIpLabelFile)
 
+''' testing data transform to numpy array '''
 test_X = test_X.values
 test_Y = test_Y.values
 
@@ -87,6 +113,9 @@ test_y_predicted2 = classifier2.predict(test_X)
 
 print '3. Predicting finish.'
 
+
+# 績效
+accuracy = metrics.accuracy_score(test_Y, test_y_predicted2)
 
 ''' compute predicting accuracy '''
 correct=0
