@@ -27,6 +27,8 @@ I use some of the predicting models from [sklearn](http://scikit-learn.org/) and
 $ python cosine-similarity.py
 ```
 Step 1. First of all, read the training and testing data file.
+<br/>
+
 Step 2. Set the data format to pandas like this:
 ```
     allDataset:
@@ -36,6 +38,7 @@ Step 2. Set the data format to pandas like this:
     |	testing  data 	|
     +-------------------+
 ```
+<br/>
 
 Step 3. And transform it to training data and testing data like this.
 ```
@@ -55,6 +58,7 @@ Step 3. And transform it to training data and testing data like this.
     +---------------------------------------------------------------------------------+
 
 ```
+<br/>
 
 Step 4. Get the domain's flag, which is core domain or support domain.
 ```
@@ -73,6 +77,7 @@ Step 4. Get the domain's flag, which is core domain or support domain.
     | damain N |                 |
     +----------------------------+
 ```
+<br/>
 
 Step 5. Transform it to numpy array type. Because numpy array doing mutiply is super quick.
 ```
@@ -83,9 +88,10 @@ Step 5. Transform it to numpy array type. Because numpy array doing mutiply is s
     | is core domain |          |          | ... |          |
     +-------------------------------------------------------+
 ```
+<br/>
 
 Step 6. Calculating accuracy by doing cosine similarity. Choose the biggest similarity value as the predicting answer, and then check it.
-
+<br/>
 
 #### 2. Predicting Models
 ###### 2.1 Random forest
@@ -102,6 +108,7 @@ Step 1. read data from csv file. The data format is:
     |      |                      |                        |
     +------------------------------------------------------+
 ```
+<br/>
 
 Step 2. Set training / testing data X and Y.
 ```
@@ -120,16 +127,19 @@ Step 2. Set training / testing data X and Y.
     +------------------+
 
 ```
+<br/>
 
 Step 3. Train training data to the models.
 ```python
 models.fit(trainingX, trainingY)
 ```
+<br/>
 
 Step 4. Predict testing data to the models.
 ```python
 testingPredicingY = models.predict(testingX)
 ```
+<br/>
 
 Step 5. Calculating accuracy by module ```metrics```.
 ```python
