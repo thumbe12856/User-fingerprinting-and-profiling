@@ -19,7 +19,6 @@ testingIpLabelFile = './data/testing/testing_data2_IP_with_label.csv'
 
 """
 dataset = pd.read_csv(trainingFile)
-mask1 = (dataset['date'] >= '2017-01-06 18:00:00') & (dataset['date'] <='2017-01-06 23:59:59')
 
 
 """
