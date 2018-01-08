@@ -26,8 +26,18 @@ if __name__ == "__main__":
 	dataset1Len = 0
 	dataset2Len = 0
 	for i in range(allFiles):
+		
+		''' 1 hour '''
+		# trainingFile = './data/training/1_hour/training_data2_1hour_' + str(i) + '.csv'
+		# testingFile = './data/testing/1_hour/testing_data2_1hour_' + str(i) +'.csv'
+
+		''' 6 hours '''
 		trainingFile = './data/training/6_hour/training_data2_6hour_' + str(i * 6) + '.csv'
 		testingFile = './data/testing/6_hour/testing_data2_6hour_' + str(i * 6) +'.csv'
+
+		''' 24 hours '''
+		# trainingFile = './data/training/traing_data2.csv'
+		# testingFile = './data/testing/testing_data2.csv'
 
 		trainingFileExist = Path(trainingFile)
 		testingFileExist = Path(testingFile)
@@ -37,6 +47,12 @@ if __name__ == "__main__":
 			column_names = ['IP', 'Domain', 'flag', 'date']
 			dataset1 = pd.read_csv(trainingFile)
 			dataset2 = pd.read_csv(testingFile)
+
+			coreDomain = dataset1['flag'] == True
+			dataset1 = dataset1[coreDomain]
+			coreDomain = dataset2['flag'] == True
+			dataset2 = dataset2[coreDomain]
+
 			dataset1Len += len(dataset1)
 			dataset2Len += len(dataset2)
 			dataset1.columns = column_names

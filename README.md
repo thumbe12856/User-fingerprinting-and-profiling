@@ -32,7 +32,7 @@ Step 1. First of all, read the training and testing data file.
 Step 2. Set the data format to pandas like this:
 ```
     allDataset:
-	+-------------------+
+    +-------------------+
     |	training data 	|
     +-------------------+
     |	testing  data 	|
@@ -64,7 +64,7 @@ Step 4. Get the domain's flag, which is core domain or support domain.
 ```
 	domainFlag: (type: pandas dataFrame)
     +----------------------------+
-    |		   | is core domain? |
+    |          | is core domain? |
     |----------------------------|
     | damain 1 |                 |
     |----------------------------|
@@ -94,10 +94,17 @@ Step 6. Calculating accuracy by doing cosine similarity. Choose the biggest simi
 <br/>
 
 #### 2. Predicting Models
-###### 2.1 Random forest
-###### 2.2 MLPClassifier (Neural Network)
-###### 2.3 Navie Bayes
-###### 2.4 Logistic Regression
+###### 2.1 K Nearest Neighbor
+###### 2.2 Navie Bayes
+###### 2.3 Random forest
+###### 2.4 MLPClassifier (Neural Network)
+```sh
+$ python modelPredict.py --model=[model type] --time=[time series type]
+```
+```sh
+modelTypes = ['knn', 'navieBayes', 'randomForest', 'neuralNetwork']
+timeTypes = [1, 6, 24]
+```
 
 Step 1. read data from csv file. The data format is:
 ```
