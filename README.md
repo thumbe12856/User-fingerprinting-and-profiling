@@ -26,6 +26,8 @@ I use some of the predicting models from [sklearn](http://scikit-learn.org/) and
 ```sh
 $ python cosine-similarity.py
 ```
+<br/>
+
 Step 1. First of all, read the training and testing data file.
 <br/>
 
