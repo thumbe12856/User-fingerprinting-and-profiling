@@ -5,12 +5,18 @@ import model
 
 modelTypes = ['knn', 'navieBayes', 'randomForest', 'neuralNetwork']
 timeTypes = [1, 6, 24]
+domainTypes = {
+    'all': -1,
+    'core': True,
+    'support': False
+}
 
 """ main """
 if __name__ == "__main__":
+    domainType = -1
 
-    if len(sys.argv) != 3:
-        print 'Please enter the model type with --model=[model type] --time=[time series type]'
+    if len(sys.argv) < 3:
+        print 'Please enter the command with: --model=[model type] --time=[time series type] --domain=[domain type](optional, default = all domain)'
         sys.exit()
     else:
         if sys.argv[1].startswith('--'):
@@ -30,14 +36,24 @@ if __name__ == "__main__":
                 timeType = int(sys.argv[2][7:])
                 if timeType not in timeTypes:
                     print timeType
-                    print 'only these model type can used.', timeTypes
+                    print 'only these time type can used.', timeTypes
             else:
                 print 'Please type --time=[time series type].'
                 sys.exit()
 
-        else:
-            print 'Please enter the model type with --model=[model type] --time=[time series type]'
-            sys.exit()
+        if(len(sys.argv) == 4):
+            if sys.argv[3].startswith('--'):
+                option = sys.argv[3][2:8]
+                if option == 'domain':
+                    domainType = sys.argv[3][9:]
+                    if domainType not in domainTypes:
+                        print domainType
+                        print 'only these domain type can used.', domainTypes
+                    else:
+                        domainType = domainTypes[domainType]
+                else:
+                    print 'Please type --domain=[domain type].'
+                    sys.exit()
 
     correctMean = 0
     allFiles = 24 / int(timeType)
@@ -58,13 +74,13 @@ if __name__ == "__main__":
             trainingFile = './data/training/training_data2_IP_with_label.csv'
             testingFile = './data/testing/testing_data2_with_label.csv'
         else:
-            print 'only these model type can used.', timeTypes
+            print 'only these time type can used.', timeTypes
             sys.exit()
 
 
         ''' first of all, read data from files, and then transform the data to the format. '''
         ''' step 1 '''
-        X, Y, test_X, test_Y = model.readFile(trainingFile, testingFile)
+        X, Y, test_X, test_Y = model.readFile(trainingFile, testingFile, domainType)
 
         ''' step 2 to 4 '''
         ''' training and testing '''

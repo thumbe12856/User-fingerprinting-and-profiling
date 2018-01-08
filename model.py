@@ -8,7 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.naive_bayes import GaussianNB
 from sklearn.neural_network import MLPClassifier
 
-def readFile(trainingFile, testingFile):
+def readFile(trainingFile, testingFile, domainType = -1):
         """
             dataset:
             +------------------------------------------------------+
@@ -19,9 +19,16 @@ def readFile(trainingFile, testingFile):
 
         """
         dataset = pd.read_csv(trainingFile)
-        # support domain
-        coreDomain = dataset['flag'] == False
-        dataset = dataset[coreDomain]
+        
+
+        """
+                domainType:
+                true: core domain
+                false: support domain
+        """
+        if(domainType >= 0):
+                coreDomain = dataset['flag'] == domainType
+                dataset = dataset[coreDomain]
 
 
         """
