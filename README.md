@@ -64,7 +64,7 @@ Step 3. And transform it to training data and testing data like this.
 
 Step 4. Get the domain's flag, which is core domain or support domain.
 ```
-	domainFlag: (type: pandas dataFrame)
+	domainFlag: (dtype: pandas dataFrame)
     +-----------------------------+
     |          |  is core domain  |
     |-----------------------------|
@@ -83,7 +83,7 @@ Step 4. Get the domain's flag, which is core domain or support domain.
 
 Step 5. Transform it to numpy array type. Because numpy array doing mutiply is super quick.
 ```
-	domainWeight: (type: numpy array)
+	domainWeight: (dtype: numpy array)
     +-------------------------------------------------------+
     |                | domain 1 | domain 2 | ... | domain N |
     |-------------------------------------------------------|
