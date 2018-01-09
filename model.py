@@ -63,8 +63,9 @@ def readFile(trainingFile, testingFile, domainType = -1):
 
         ''' testing data '''
         test = pd.read_csv(testingFile)
-        coreDomain = test['flag'] == False
-        test = test[coreDomain]
+        if(domainType >= 0):
+            coreDomain = test['flag'] == domainType
+            test = test[coreDomain]
 
         test_X = test.drop(['IP address', 'flag', 'date', 'label'], 1)
         test_Y = test.drop(['IP address', 'Domain', 'flag', 'date'], 1)
