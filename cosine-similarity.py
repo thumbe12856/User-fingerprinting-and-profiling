@@ -28,6 +28,7 @@ domainTypes = {
 """ main """
 if __name__ == "__main__":
     domainType = -1
+    
 
     if len(sys.argv) < 2:
         print 'Please enter the command with: --time=[time series type] --domain=[domain type](optional, default = all domain)'

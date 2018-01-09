@@ -78,8 +78,8 @@ if __name__ == "__main__":
             sys.exit()
 
 
-        ''' first of all, read data from files, and then transform the data to the format. '''
         ''' step 1 '''
+        ''' first of all, read data from files, and then transform the data to the format. '''
         X, Y, test_X, test_Y = model.readFile(trainingFile, testingFile, domainType)
 
         ''' step 2 to 4 '''

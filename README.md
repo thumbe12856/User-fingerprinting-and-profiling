@@ -18,11 +18,34 @@ And I transform to my format.
 * Pandas
 * Numpy
 
+### Usage
+#### 1. Cosine similarity
+Domain type is optional, default is all domain.
+```sh
+$ python cosine-similarity.py --time=[time series type] --domain=[domain type]
+```
+```sh
+timeTypes = [1, 6, 24]
+domainTypes = ['all', 'core', 'support']
+```
+
+
+#### 2. Predicting Models
+Domain type is optional, default is all domain.
+```sh
+$ python modelPredict.py --model=[model type] --time=[time series type] --domain=[domain type]
+```
+```sh
+modelTypes = ['knn', 'navieBayes', 'randomForest', 'neuralNetwork']
+timeTypes = [1, 6, 24]
+domainTypes = ['all', 'core', 'support']
+```
+
 
 ### Methods
 I use some of the predicting models from [sklearn](http://scikit-learn.org/) and cosine similarity to do the predicting. Simply, we want to use domain to predict which user visited by ip address.
 
-##### 1. Cosine similarity
+#### 1. Cosine similarity
 ```sh
 $ python cosine-similarity.py
 ```
@@ -101,15 +124,15 @@ Step 6. Calculating accuracy by doing cosine similarity. Choose the biggest simi
 ###### 2.3 Random forest
 ###### 2.4 MLPClassifier (Neural Network)
 ```sh
-$ python modelPredict.py --model=[model type] --time=[time series type]
+$ python modelPredict.py --model=[model type] --time=[time series type] --domain=[domain type]
 ```
 ```sh
 modelTypes = ['knn', 'navieBayes', 'randomForest', 'neuralNetwork']
 timeTypes = [1, 6, 24]
+domainTypes = ['all', 'core', 'support']
 ```
 
 Step 1. read data from csv file. The data format is:
-```
 	dataset:
     +------------------------------------------------------+
     | Index | IP address | Domain | flag | date | IP label |
