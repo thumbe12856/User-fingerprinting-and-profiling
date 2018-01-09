@@ -8,7 +8,7 @@ For more details, we reference the paper from [ACM SIGCOMM 2017](https://confere
 The dataset is from the paper supports. [link](https://bigdata.polito.it/content/domains-web-users)
 
 And I transform to my format.
-
+<br/>
 
 ### Environment
 * I7 6700
@@ -17,6 +17,7 @@ And I transform to my format.
 * Sklearn 
 * Pandas
 * Numpy
+<br/>
 
 ### Usage
 #### 1. Cosine similarity
@@ -28,7 +29,7 @@ $ python cosine-similarity.py --time=[time series type] --domain=[domain type]
 timeTypes = [1, 6, 24]
 domainTypes = ['all', 'core', 'support']
 ```
-
+<br/>
 
 #### 2. Predicting Models
 Domain type is optional, default is all domain.
@@ -40,7 +41,8 @@ modelTypes = ['knn', 'navieBayes', 'randomForest', 'neuralNetwork']
 timeTypes = [1, 6, 24]
 domainTypes = ['all', 'core', 'support']
 ```
-
+<br/>
+<br/>
 
 ### Methods
 I use some of the predicting models from [sklearn](http://scikit-learn.org/) and cosine similarity to do the predicting. Simply, we want to use domain to predict which user visited by ip address.
@@ -133,6 +135,7 @@ domainTypes = ['all', 'core', 'support']
 ```
 
 Step 1. read data from csv file. The data format is:
+```
 	dataset:
     +------------------------------------------------------+
     | Index | IP address | Domain | flag | date | IP label |
