@@ -42,6 +42,7 @@ if __name__ == "__main__":
                 if timeType not in timeTypes:
                     print timeType
                     print 'only these time type can used.', timeTypes
+                    sys.exit()
             else:
                 print 'Please type --time=[time series type].'
                 sys.exit()
@@ -54,6 +55,7 @@ if __name__ == "__main__":
                     if domainType not in domainTypes:
                         print domainType
                         print 'only these domain type can used.', domainTypes
+                        sys.exit()
                     else:
                         domainType = domainTypes[domainType]
                 else:
